@@ -2,13 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
 
-class User extends Model {
-  checkPassword(loginPW) {
-    bcrypt.compare(loginPW, this.password)
-      .then(result => result)
-      .catch((err) =>  { throw err });
-  }
-}
+class User extends Model {}
 
 User.init(
   {
@@ -50,8 +44,6 @@ User.init(
       }
     },
     sequelize,
-    underscored: true,
-    freezeTableName: true,
     modelName: 'user'
   }
 )

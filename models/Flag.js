@@ -15,7 +15,6 @@ Flag.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        freezeTableName: true,
         model: 'user',
         key: 'id'
       }
@@ -24,7 +23,6 @@ Flag.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        freezeTableName: true,
         model: 'post',
         key: 'id'
       } 
@@ -32,8 +30,6 @@ Flag.init(
   },
   {
     sequelize,
-    underscored: true,
-    freezeTableName: true,
     modelName: 'like'
   });
 

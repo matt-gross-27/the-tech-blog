@@ -27,7 +27,6 @@ Post.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        freezeTableName: true,
         model: 'user',
         key: 'id'
       }
@@ -35,8 +34,6 @@ Post.init(
   },
   {
     sequelize,
-    underscored: true,
-    freezeTableName: true,
     modelName: 'post'
   });
 
