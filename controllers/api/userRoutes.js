@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
 // GET /api/users -> (read all users)
 router.get('/', (req, res) => {
   User.findAll({
-    // attributes: { exclude: ['password'] }
+    attributes: { exclude: ['password'] }
   })
     .then(userData => res.json(userData))
     .catch(err => {
@@ -29,7 +29,28 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   User.findOne({
     where: { id: req.params.id },
-    // attributes: { exclude: ['password'] }
+    attributes: { exclude: ['password'] },
+    include: [
+      {
+        model: Post
+      },
+      {
+        model: Post,
+        through: Like,
+        as: 'liked_posts'
+      },
+      {
+        model: Post,
+        through: Flag,
+        as: 'flagged_posts'
+      },
+      {
+        model: Comment,
+        include: {
+          model: Post
+        }
+      }
+    ]
   })
     .then(userData => {
       if (!userData) {
