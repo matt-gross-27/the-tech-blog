@@ -38,8 +38,61 @@ h1 {
   font-weight: bold;
 }
 
-button:focus {
+.h2 {
+  color: var(--color1);
+  font-size: 24px;
+  text-align: center;
+  margin-top: 20px;
+  margin: 20px auto 0 auto;
+  width: 80%;
+}
+
+form {
+  max-width: 550px;
+  margin: 10px auto;
+}
+
+label {
+  color: var(--color2);
+  margin-top: 15px;
+}
+
+button:focus, input:focus {
   outline:none;
+}
+
+.btn-primary {
+  background-color: var(--color3);
+  color: black;
+  font-weight: bold;
+  padding: 5px 15px;
+  border-radius: 15px;
+  margin-top: 15px
+}
+
+.btn-main {
+  background-color: var(--color3);
+  color: black;
+  font-weight: bold;
+  padding: 5px 15px;
+  border-radius: 15px;
+  margin-top: 15px;
+  transition: .2s;
+}
+
+.btn-main:focus {
+  outline: none;
+  background-color: var(--color2);
+}
+
+.btn-main:active {
+  outline: none;
+  background-color: var(--color2);
+}
+
+.btn-main:hover {
+  outline: none;
+  background-color: var(--color2);
 }
 
 .nav-item {
@@ -72,11 +125,12 @@ button:focus {
   text-decoration: none;
   border: none;
   outline: none;
+  font-size: 20px;
 }
 
 .post-buttons {
-  height: 55px;
-  width: 55px;
+  height: 50px;
+  width: 50px;
   transition: .4s ease-in-out;
   color: var(--color3);
 }
@@ -100,3 +154,4 @@ button:focus {
   background-color: var(--color3);
   color: green;
 }
+

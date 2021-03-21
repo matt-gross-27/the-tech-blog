@@ -6,7 +6,16 @@ const { User, Post, Comment, Like, Flag } = require('../../models');
 router.post('/', (req, res) => {
   // expects req.body === {"username": "STR", "email": "STR(isEmail)", "password": "STR(len >= 8)" }
   User.create(req.body)
-    .then(userData => res.json(userData))
+    .then(userData => {
+      const user = userData.get({ plain: true });
+      req.session.save(() => {
+        req.session.user_id = user.id;
+        req.session.username = user.username;
+        req.session.loggedIn = true;
+        // req.session.cookie.maxAge = 3600,
+        res.json({ ...req.session, message: `Welcome to The Tech Blog ${userData.username}` });
+      });
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
