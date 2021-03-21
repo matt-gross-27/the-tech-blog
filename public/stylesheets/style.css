@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color1: #9df5bf;
+  --color2: #F59ED4;
+  --color3: #F5EB9E;
+  --color4: #9EA8F5;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: black;
+  color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 99999;
+  background-color: black;
+  border-bottom: var(--color4) solid 1px;
+  padding-bottom: 10px;
+}
+
+footer {
+  border-top: var(--color4) solid 1px;
+}
+
+h1 {
+  color: var(--color1);
+  text-shadow: 2px 1px 1px var(--color2);
+  font-weight: bold;
+}
+
+button:focus {
+  outline:none;
+}
+
+.nav-item {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--color3);
+  transition: color .3s;
+}
+
+.nav-item:hover {
+  color: var(--color2);
+  text-decoration: none;
+}
+
+.accordion {
+  /* background: none; */
+  color: var(--color4);
+}
+
+.accordion-item {
+  border: var(--color1) solid 1px;
+}
+
+.accordion-button {
+  background: none;
+  color: var(--color1);
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+.post-buttons {
+  height: 55px;
+  width: 55px;
+  transition: .4s ease-in-out;
+  color: var(--color3);
+}
+
+.oi-commentDiv:hover{
+  background-color: var(--color3);
+  color: blue;
+}
+
+.oi-likeDiv:hover{
+  background-color: var(--color3);
+  color: red;
+}
+
+.oi-flagDiv:hover{
+  background-color: red;
+  color: black;
+}
+
+.oi-shareDiv:hover{
+  background-color: var(--color3);
+  color: green;
+}

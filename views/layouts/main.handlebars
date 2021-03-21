@@ -8,19 +8,21 @@
   <link rel="shortcut icon" href=   "https://cdn0.iconfinder.com/data/icons/social-networks-and-media-flat-icons/136/Social_Media_Socialmedia_network_share_socialnetwork_network-22-512.png"> 
   <link rel="apple-touch-icon" href="https://cdn0.iconfinder.com/data/icons/social-networks-and-media-flat-icons/136/Social_Media_Socialmedia_network_share_socialnetwork_network-22-512.png"> 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link href="/open-iconic/font/css/open-iconic.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.min.css" integrity="sha512-LeCmts7kEi09nKc+DwGJqDV+dNQi/W8/qb0oUSsBLzTYiBwxj0KBlAow2//jV7jwEHwSCPShRN2+IWwWcn1x7Q==" crossorigin="anonymous" />
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
-<body>
+<body class="container px-4 py-3">
   <header>
-    <h1>
-      <a href="/">The Tech Blog</a>
+    <h1 class="text-center">
+      The Tech Blog
     </h1>
     
-    <nav>
-      <a href="/dashboard">Manage Posts</a>
-      <a href="/login">Login</a>
-      <button id="logout">Logout</button>
+    <nav class="d-flex justify-content-between">
+      <a class='nav-item' href="/">Home</a>
+      <a class='nav-item' href="/search">Search</a>
+      <a class='nav-item' href="/dashboard">Username</a>
+      <a class='nav-item' href="/login">Login</a>
+      <button class="nav-item" id="logout">Logout</button>
     </nav>
   </header>
 
@@ -28,8 +30,12 @@
     {{{body}}}
   </main>
 
-  <footer>
+  <footer class="mt-5">
     Made with 💚 by Matt Gross &copy 2021
   </footer>
+<!-- JavaScript Bundle with Popper -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
 </body>
 </html>
