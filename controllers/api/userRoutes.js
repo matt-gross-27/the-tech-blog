@@ -103,7 +103,7 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-// POST /api/users/login (save a session object with { username, user_id, loggedIn: true})
+// POST LOGIN /api/users/login (create a session object with { username, user_id, loggedIn: true})
 router.post('/login', (req, res) => {
   //expects req.body = { "email": "STR(isEmail)", "password": "STR(len >= 8)" }
   User.findOne({
@@ -126,7 +126,8 @@ router.post('/login', (req, res) => {
             req.session.user_id = userData.id;
             req.session.username = userData.username;
             req.session.loggedIn = true;
-            res.json({ user: userData.username, message: `Welcome to The Tech Blog ${userData.username}` });
+            // req.session.cookie.maxAge = 3600,
+            res.json({ ...req.session, message: `Welcome to The Tech Blog ${userData.username}` });
           });
         })
         .catch(err => {
@@ -147,8 +148,8 @@ router.post('/logout', (req, res) => {
       res.status(204).end();
     });
   } else {
-    res.status(404).json({ message: `You need to be logged in to log out` }).end()
+    res.status(404).json({ message: `You need to be logged in to log out` }).end();
   }
-})
+});
 
 module.exports = router;

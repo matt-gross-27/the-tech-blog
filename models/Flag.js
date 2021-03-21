@@ -9,7 +9,7 @@ Flag.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement:true
+      autoIncrement: true
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -30,7 +30,7 @@ Flag.init(
   },
   {
     sequelize,
-    modelName: 'like'
+    modelName: 'flag'
   });
 
 module.exports = Flag
