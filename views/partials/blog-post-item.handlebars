@@ -6,23 +6,36 @@
       </button>
     </h2>
     <div id="collapse{{id}}" class="accordion-collapse collapse show" aria-labelledby="heading{{id}}" data-bs-parent="#accordionExample">
-      <div class="accordion-body px-2 px-md-5 text-justify">
+      <div class="accordion-body px-3 px-md-5 text-justify">
         <div>
+          <p>
           {{blog_text}}
+          </p>
         </div>
         <div class="d-flex justify-content-around my-3">
-          <div class="oi-commentDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}">
+          
+          <a class="oi-commentDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}"
+             href = "/posts/{{id}}"
+          >
             <span class="oi" data-glyph="comment-square"></span>
             <span>{{comments.length}}</span>
-          </div>
-          <div class="oi-likeDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}">
+          </a>
+          
+          <div class="oi-likeDiv d-flex align-items-center justify-content-center post-buttons rounded-circle 
+            {{#if i_like}} red {{/if}}" 
+            data-post_id ="{{id}}"
+            {{#if i_like}} data-i_like="1" {{/if}}
+            {{#unless i_like}} data-i_like="0" {{/unless}}
+          >
             <span class="oi" data-glyph="heart"></span>
             <span>{{like_count}}</span>
           </div>
+          
           <div class="oi-flagDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}">
             <span class="oi" data-glyph="flag"></span>
             <span>{{flag_count}}</span>
           </div>
+          
           <div class="oi-shareDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}">
             <span class="oi" data-glyph="share-boxed"></span>
           </div>

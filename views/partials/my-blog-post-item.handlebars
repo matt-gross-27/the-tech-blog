@@ -1,0 +1,52 @@
+
+  <div class="accordion-item">
+    <h2 class="accordion-header p-3" id="heading{{id}}">
+      <button class="accordion-button w-100 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{id}}" aria-expanded="true" aria-controls="collapse{{id}}">
+        <em>{{title}}</em> by {{user.username}} on {{format_date created_at}}
+      </button>
+    </h2>
+    <div id="collapse{{id}}" class="accordion-collapse collapse show" aria-labelledby="heading{{id}}" data-bs-parent="#accordionExample">
+      <div class="accordion-body px-3 px-md-5 text-justify">
+        <div>
+          <p>
+          {{blog_text}}
+          </p>
+        </div>
+        <div class="d-flex justify-content-around my-3">
+          
+          <a class="oi-commentDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}"
+             href = "/posts/{{id}}"
+          >
+            <span class="oi" data-glyph="comment-square"></span>
+            <span>{{comments.length}}</span>
+          </a>
+
+          <a class="oi-editDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}"
+             href = "/posts/edit/{{id}}"
+          >
+            <span class="oi" data-glyph="pencil"></span>
+          </a>
+          
+          <div class="oi-likeDiv d-flex align-items-center justify-content-center post-buttons rounded-circle 
+            {{#if i_like}} red {{/if}}" 
+            data-post_id ="{{id}}"
+            {{#if i_like}} data-i_like="1" {{/if}}
+            {{#unless i_like}} data-i_like="0" {{/unless}}
+          >
+            <span class="oi" data-glyph="heart"></span>
+            <span>{{like_count}}</span>
+          </div>
+          
+          <div class="oi-trashDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}"
+            data-post_id ="{{id}}"
+          >
+            <span class="oi" data-glyph="trash"></span>
+          </div>
+          
+          <div class="oi-shareDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}">
+            <span class="oi" data-glyph="share-boxed"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

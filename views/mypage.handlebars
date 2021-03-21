@@ -1,0 +1,27 @@
+<h2 class="h2">Create a Post</h2>
+<form id="create-post">
+  <div>
+    <label for="new-title">Title</label>
+    <input class="w-100" type="text" name="new-title" id="new-title" placeholder="Enter Title">
+  </div>
+
+  <div>
+    <label for="blog-text">Body</label>
+    <textarea class="w-100" name="blog-text" id="blog-text" placeholder="Enter Body"></textarea>
+  </div>
+
+  <button class="btn-main" type="submit">Add Post</button>
+</form>
+
+
+<h2 class="h2">My Posts</h2>
+
+<div class="accordion accordion-flush w-100 mt-5" id="postAccordion">
+  {{#each posts}}
+    {{> my-blog-post-item}}
+  {{/each}}
+</div>
+
+<script src='/javascript/like.js'></script>
+<script src='/javascript/addPost.js'></script>
+<script src='/javascript/deletePost.js'></script>

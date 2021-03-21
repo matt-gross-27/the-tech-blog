@@ -2,9 +2,12 @@ const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const { Post, User, Comment } = require('../../models');
 
-// GET then render homepage
-router.get('/', (req, res) => {
-  Post.findAll({
+// GET /mypage then render html
+router.get('/:id', (req, res) => {
+  Post.findOne({
+    where: {
+      id: req.params.id
+    },
     attributes: [
       'id',
       'title',
@@ -31,10 +34,10 @@ router.get('/', (req, res) => {
     order: [['id', 'DESC']]
   })
     .then(postData => {
-      const posts = postData.map(post => post.get({ plain: true }));
-      console.log({posts, ...req.session})
-      res.render('homepage', { 
-        posts,
+      const post = postData.get({ plain: true });
+      console.log({post, ...req.session})
+      res.render('edit-post', { 
+        post,
         ...req.session
       });
     })

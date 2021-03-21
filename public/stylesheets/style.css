@@ -50,6 +50,8 @@ h1 {
 form {
   max-width: 550px;
   margin: 10px auto;
+  border: 1px solid var(--color2);
+  padding: 15px;
 }
 
 label {
@@ -57,8 +59,12 @@ label {
   margin-top: 15px;
 }
 
-button:focus, input:focus {
+button:focus, input:focus, textarea:focus {
   outline:none;
+}
+
+textarea {
+  min-height: 250px;
 }
 
 .btn-primary {
@@ -135,7 +141,7 @@ button:focus, input:focus {
   color: var(--color3);
 }
 
-.oi-commentDiv:hover{
+.oi-commentDiv:hover, .oi-editDiv:hover{
   background-color: var(--color3);
   color: blue;
 }
@@ -145,13 +151,17 @@ button:focus, input:focus {
   color: red;
 }
 
-.oi-flagDiv:hover{
+.oi-flagDiv:hover, .oi-trashDiv:hover {
   background-color: red;
   color: black;
 }
 
-.oi-shareDiv:hover{
+.oi-shareDiv:hover {
   background-color: var(--color3);
   color: green;
+}
+
+.red {
+  color: red;
 }
 

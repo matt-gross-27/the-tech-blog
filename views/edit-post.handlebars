@@ -1,0 +1,16 @@
+<h2 class="h2">Edit Post</h2>
+<form id="update-post">
+  <div>
+    <label for="new-title">Title</label>
+    <input class="w-100" value="{{post.title}}" type="text" name="new-title" id="new-title" placeholder="Enter Title">
+  </div>
+
+  <div>
+    <label for="blog-text">Body</label>
+    <textarea class="w-100" name="blog-text" id="blog-text" placeholder="Enter Body">{{post.blog_text}}</textarea>
+  </div>
+
+  <button class="btn-main" type="submit">Update Post</button>
+</form>
+
+<script src= "../../javascript/editPost.js"></script>
