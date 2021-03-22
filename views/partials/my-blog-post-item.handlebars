@@ -1,52 +1,51 @@
+<div class="blog-post-item">
+  <h2 class="blog-post-header text-center p-3">
+    <a id="blog-post-{{id}}"class="blog-post-title" href="/posts/{{id}}">{{title}}</a>
+    <br>
+    <a class="post-username" href="/{{user.username}}">@{{user.username}}</a>
+    <span class="blog-post-date">({{format_date created_at}})</span>
+  </h2>
+  
+  <div class="blog-post-body px-3 px-md-5 text-justify">
+    
+    <p class="blog-post-p">{{blog_text}}</p>
+    
+    <div class="d-flex justify-content-around my-3">
+      
+      {{!-- Comment --}}
+      <a class="oi-commentDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}"href = "/posts/{{id}}">
+        <span class="oi" data-glyph="comment-square"> {{comments.length}}</span>
+      </a>
+      
+      {{!-- LIKE --}}
+      <div class="oi-likeDiv {{#if i_like}} red {{/if}} d-flex align-items-center justify-content-center post-buttons rounded-circle "
+           data-post_id ="{{id}}"          
+           {{#if i_like}} data-i_like="1" {{/if}}
+           {{#unless i_like}} data-i_like="0" {{/unless}}
+      >
+        <span class="oi" data-glyph="heart"> {{likes.length}}</span>
+      </div>
 
-  <div class="accordion-item">
-    <h2 class="accordion-header p-3" id="heading{{id}}">
-      <button class="accordion-button w-100 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{id}}" aria-expanded="true" aria-controls="collapse{{id}}">
-        <em>{{title}}</em> by {{user.username}} on {{format_date created_at}}
-      </button>
-    </h2>
-    <div id="collapse{{id}}" class="accordion-collapse collapse show" aria-labelledby="heading{{id}}" data-bs-parent="#accordionExample">
-      <div class="accordion-body px-3 px-md-5 text-justify">
-        <div>
-          <p class="accordion-p">{{blog_text}}</p>
-        </div>
-        
-        <div class="d-flex justify-content-around my-3">
-          
-          {{!-- Comment --}}
-          <a class="oi-commentDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}"
-             href = "/posts/{{id}}"
-          >
-            <span class="oi" data-glyph="comment-square"> {{comments.length}}</span>
-          </a>
-          
-          {{!-- LIKE --}}
-          <div class="oi-likeDiv d-flex align-items-center justify-content-center post-buttons rounded-circle 
-            {{#if i_like}} red {{/if}}" 
-            data-post_id ="{{id}}"
-            {{#if i_like}} data-i_like="1" {{/if}}
-            {{#unless i_like}} data-i_like="0" {{/unless}}
-          >
-            <span class="oi" data-glyph="heart"> {{likes.length}}</span>
-          </div>
-
-          {{!-- EDIT --}}
-          <a class="oi-commentDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}"
-             href = "posts/edit/{{id}}"
-          >
-            <span class="oi" data-glyph="pencil"></span>
-          </a>
-
-          {{!-- TRASH  --}}
-          <div class="oi-trashDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}">
-            <span class="oi" data-glyph="trash"></span>
-          </div>
-          
-          {{!-- SHARE --}}
-          <div class="oi-shareDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}">
-            <span class="oi" data-glyph="share-boxed"></span>
-          </div>
-        </div>
+      {{!-- EDIT --}}
+      <a href="posts/edit/{{id}}" class="oi-commentDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}">
+        <span class="oi" data-glyph="pencil"></span>
+      </a>
+      
+      {{!-- TRASH  --}}
+      <div class="oi-trashDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}">
+        <span class="oi" data-glyph="trash"></span>
+      </div>
+      
+      {{!-- FLAG Model and Controllers finished View Outstanding --}}
+      {{!-- <div class="oi-flagDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}">
+        <span class="oi" data-glyph="flag"></span>
+        <span>{{flag_count}}</span>
+      </div> --}}
+      
+      {{!-- SHARE --}}
+      <div class="oi-shareDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}">
+        <span class="oi" data-glyph="share-boxed"></span>
       </div>
     </div>
   </div>
+</div>

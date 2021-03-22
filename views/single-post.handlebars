@@ -1,58 +1,65 @@
-
-  <div class="accordion-item">
-    <h2 class="accordion-header p-3" id="heading{{post.id}}">
-      <button class="accordion-button w-100 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{post.id}}" aria-expanded="false" aria-controls="collapse{{post.id}}">
-        <em>{{post.title}}</em> by {{post.user.username}} on {{format_date post.created_at}}
-      </button>
-    </h2>
-    <div id="collapse{{post.id}}" class="accordion-collapse collapse show" aria-labelledby="heading{{post.id}}" data-bs-parent="#accordionExample">
-      <div class="accordion-body px-3 px-md-5 text-justify">
-        <div>
-          <p class="accordion-p">{{post.blog_text}}</p>
+<div class="blog-post-item">
+  <h2 class="blog-post-header text-center p-3">
+    <a id="blog-post-{{post.id}}"class="blog-post-title" href="/posts/{{post.id}}">{{post.title}}</a>
+    <br>
+    <a class="post-username" href="/{{post.user.username}}">@{{post.user.username}}</a>
+    <span class="blog-post-date">({{format_date post.created_at}})</span>
+  </h2>
+  
+  <div class="blog-post-body px-3 px-md-5 text-justify">
+    
+    <p class="blog-post-p">{{post.blog_text}}</p>
+    
+    <div class="d-flex justify-content-around my-3">
+      {{#if loggedIn}}
+        {{!-- Comment --}}
+        <div class="oi-commentDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{post.id}}">
+          <span class="oi" data-glyph="comment-square"> {{post.comments.length}}</span>
         </div>
+
+        {{!-- LIKE --}}
+        <div class="oi-likeDiv {{#if post.i_like}} red {{/if}} d-flex align-items-center justify-content-center post-buttons rounded-circle"
+             data-post_id ="{{post.id}}"          
+             {{#if post.i_like}} data-i_like="1" {{/if}}
+             {{#unless post.i_like}} data-i_like="0" {{/unless}}
+        >
+          <span class="oi" data-glyph="heart"> {{post.likes.length}}</span>
+        </div>
+      {{/if}}
+
+      {{#unless loggedIn}}
+        {{!-- Comment --}}
+        <a href="/login" class="oi-commentDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{post.id}}">
+          <span class="oi" data-glyph="comment-square"> {{post.comments.length}}</span>
+        </a>
         
-        <div class="d-flex justify-content-around my-3">
-          
-          {{!-- Comment --}}
-          <div class="oi-commentDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{post.id}}">
-            <span class="oi" data-glyph="comment-square"> {{post.comments.length}}</span>
-          </div>
+        {{!-- LIKE --}}
+        <a href="/login" data-post_id ="{{post.id}}" class="oi-likeDiv d-flex align-items-center justify-content-center post-buttons rounded-circle">
+          <span class="oi" data-glyph="heart"> {{post.likes.length}}</span>
+        </a>
+      {{/unless}}
 
-          {{!-- LIKE --}}
-          <div class="oi-likeDiv d-flex align-items-center justify-content-center post-buttons rounded-circle 
-            {{#if post.i_like}} red {{/if}}" 
-            data-post_id ="{{post.id}}"
-            {{#if post.i_like}} data-i_like="1" {{/if}}
-            {{#unless post.i_like}} data-i_like="0" {{/unless}}
-          >
-            <span class="oi" data-glyph="heart"> {{post.likes.length}}</span>
-          </div>
-
-
-          {{!-- FLAG Model and Controllers finished View Outstanding --}}
-          {{!-- <div class="oi-flagDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}">
-            <span class="oi" data-glyph="flag"></span>
-            <span>{{flag_count}}</span>
-          </div> --}}
-          
-          {{!-- SHARE --}}
-          <div class="oi-shareDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}">
-            <span class="oi" data-glyph="share-boxed"></span>
-          </div>
-        </div>
+      {{!-- SHARE --}}
+      <div class="oi-shareDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}">
+        <span class="oi" data-glyph="share-boxed"></span>
       </div>
     </div>
   </div>
+</div>
 
-  <h2 class="h2">Comment</h2>
-  <form id="create-comment" class="comment-form w-100" action="">
-    <textarea id="comment-text" class="comment-textarea w-100 mt-3"></textarea> 
-    <button class="btn-main">Add Comment</button>
-  </form>
+{{#if loggedIn}}
+<h2 class="h2">Comment</h2>
+<form id="create-comment" class="comment-form w-100" action="">
+  <textarea id="comment-text" class="comment-textarea w-100 mt-3"></textarea> 
+  <button class="btn-main">Add Comment</button>
+</form>
+{{/if}}
 
-  {{#each post.comments}}
-    {{> comments }}
-  {{/each}}
+{{#each post.comments}}
+  {{> comments }}
+{{/each}}
 
-<script src= "../../javascript/addComment.js"></script>
-<script src= "../../javascript/like.js"></script>
+{{#if loggedIn}}
+  <script src= "../../javascript/addComment.js"></script>
+  <script src= "../../javascript/like.js"></script>
+{{/if}}

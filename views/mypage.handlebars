@@ -16,12 +16,15 @@
 
 <h2 class="h2">My Posts</h2>
 
-<div class="accordion accordion-flush w-100 mt-5" id="postAccordion">
+<div class="blog-post blog-post-flush w-100 mt-5" id="postblog-post">
   {{#each posts}}
     {{> my-blog-post-item}}
   {{/each}}
 </div>
 
+
+{{#if loggedIn}}
 <script src='/javascript/like.js'></script>
 <script src='/javascript/addPost.js'></script>
 <script src='/javascript/deletePost.js'></script>
+{{/if}}

@@ -4,15 +4,14 @@ shareButtonHandler = (event) => {
   event.preventDefault();
 
   let id;
-  let shareText;
 
   if (event.target.localName === "span") {
     id = event.target.parentElement.getAttribute("data-post_id");
-    shareText = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector('.accordion-button').textContent;
   } else {
     id = event.target.getAttribute("data-post_id");
-    shareText = event.target.parentElement.parentElement.parentElement.parentElement.querySelector('.accordion-button').textContent;
   }
+
+  let shareText = document.querySelector(`#blog-post-${id}`).textContent
 
   if(navigator.share !== undefined) {
     navigator.share({

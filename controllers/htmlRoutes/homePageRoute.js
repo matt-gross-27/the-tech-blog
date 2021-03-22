@@ -39,7 +39,7 @@ router.get('/', (req, res) => {
         post.i_like = post.likes.filter(like => like.user_id === req.session.user_id).length
       });
 
-      res.render('post-accordion', { 
+      res.render('blog-feed', { 
         posts,
         ...req.session
       });

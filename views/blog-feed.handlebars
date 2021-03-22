@@ -1,5 +1,5 @@
 
-<div class="accordion accordion-flush w-100 mt-5" id="postAccordion">
+<div class="blog-post blog-post-flush w-100 mt-5" id="blog">
   {{#if loggedIn}}
   {{#each posts }}
       {{> blog-post-item-logged }}
@@ -15,10 +15,7 @@
 
 </div>
 
-
-
-
-
-
+{{#if loggedIn}}
 <script src='/javascript/like.js'></script>
 <script src='/javascript/share.js'></script>
+{{/if}}

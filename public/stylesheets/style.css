@@ -14,7 +14,7 @@
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: black;
-  color: var(--color2);
+  color: var(--color4);
   display: flex;
   flex-direction: column;
 }
@@ -131,26 +131,42 @@ textarea {
   text-decoration: none;
 }
 
-.accordion-item {
+.blog-post-item {
   border: var(--color1) solid 1px;
 }
 
-.accordion-p {
-  white-space: pre-line;  
+.blog-post-p {
+  white-space: pre-line;
+  overflow-wrap: break-word; 
 }
 
 
-.accordion-button {
+.blog-post-header {
   background: none;
-  color: var(--color3);
   text-decoration: none;
   border: none;
   outline: none;
   font-size: 20px;
 }
 
-.accordion-button:focus {
-  outline: none;
+.blog-post-title {
+  font-style: italic;
+  font-weight: bold;
+}
+
+.blog-post-header > a {
+  color: var(--color3);
+  transition: .3s;
+}
+
+.blog-post-header > a:hover {
+  text-decoration: none;
+  color: var(--color2);
+}
+
+.blog-post-date {
+  font-size: 16px;
+  color: var(--color1);
 }
 
 .post-buttons {
