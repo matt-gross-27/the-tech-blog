@@ -15,10 +15,10 @@
           
           {{!-- LIKE --}}
           <div class="oi-likeDiv d-flex align-items-center justify-content-center post-buttons rounded-circle 
-            {{#if i_like}} red {{/if}}" 
-            data-post_id ="{{id}}"
-            {{#if i_like}} data-i_like="1" {{/if}}
-            {{#unless i_like}} data-i_like="0" {{/unless}}
+            {{#if post.i_like}} red {{/if}}" 
+            data-post_id ="{{post.id}}"
+            {{#if post.i_like}} data-i_like="1" {{/if}}
+            {{#unless post.i_like}} data-i_like="0" {{/unless}}
           >
             <span class="oi" data-glyph="heart"> {{post.likes.length}}</span>
           </div>
