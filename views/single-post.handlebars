@@ -13,6 +13,11 @@
         
         <div class="d-flex justify-content-around my-3">
           
+          {{!-- Comment --}}
+          <div class="oi-commentDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{post.id}}">
+            <span class="oi" data-glyph="comment-square"> {{post.comments.length}}</span>
+          </div>
+
           {{!-- LIKE --}}
           <div class="oi-likeDiv d-flex align-items-center justify-content-center post-buttons rounded-circle 
             {{#if post.i_like}} red {{/if}}" 
