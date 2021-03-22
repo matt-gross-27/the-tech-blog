@@ -40,7 +40,7 @@
       {{/unless}}
 
       {{!-- SHARE --}}
-      <div class="oi-shareDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}">
+      <div class="oi-shareDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{post.id}}">
         <span class="oi" data-glyph="share-boxed"></span>
       </div>
     </div>
@@ -62,4 +62,5 @@
 {{#if loggedIn}}
   <script src= "../../javascript/addComment.js"></script>
   <script src= "../../javascript/like.js"></script>
+  <script src= "../../javascript/share.js"></script>
 {{/if}}

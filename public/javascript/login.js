@@ -23,8 +23,6 @@ function displaySignupBtnHandler(event) {
   $signupForm.querySelector('#signup-username').focus();
 }
 
-
-
 async function loginFormHandler(event) {
   event.preventDefault();
 
@@ -41,7 +39,7 @@ async function loginFormHandler(event) {
     if (response.ok) {
       document.location.replace('/');
     } else {
-      alert(response.statusText);
+      alert(`incorrect username or password`)
     }
   }
 }
@@ -53,7 +51,7 @@ async function signupFormHandler(event) {
   const email    = document.querySelector('#signup-email').value.trim();
   const password = document.querySelector('#signup-password').value.trim();
 
-  if (username && email && password) {
+  if (username && email && password.length >= 8) {
     const response = await fetch('/api/users', {
       method: 'POST',
       body: JSON.stringify({
@@ -65,11 +63,13 @@ async function signupFormHandler(event) {
     });
 
     if (response.ok) {
-      console.log('success');
+      document.location.replace('/');
     } else {
       alert(response.statusText);
     }
-    document.location.replace('/');
+  } else {
+    document.querySelector('#signup-password').value = null
+    document.querySelector('#signup-password').setAttribute("placeholder", "Password Must Be >= 8 Characters");
   }
 }
 
