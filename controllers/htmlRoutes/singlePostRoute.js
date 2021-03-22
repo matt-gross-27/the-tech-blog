@@ -1,11 +1,13 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const { Post, User, Comment, Like } = require('../../models');
-const { like } = require('../../models/Post');
 
-// GET then render homepage
-router.get('/', (req, res) => {
-  Post.findAll({
+// GET /posts/:id then render html
+router.get('/:id', (req, res) => {
+  Post.findOne({
+    where: {
+      id: req.params.id
+    },
     attributes: [
       'id',
       'title',
@@ -22,25 +24,26 @@ router.get('/', (req, res) => {
         }
       },
       {
-        model: User,
-        attributes: ['username']
-      },
-      {
         model: Like,
         attributes: ['user_id']
       },
-    ],
-    order: [['id', 'DESC']]
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
   })
     .then(postData => {
-      const posts = postData.map(post => post.get({ plain: true }));
+      const post = postData.get({ plain: true });
+      
+      post.i_like = post.likes.filter(like => like.user_id === req.session.user_id).length
 
-      posts.forEach(post => {
-        post.i_like = post.likes.filter(like => like.user_id === req.session.user_id).length
-      });
+      post.comments.reverse();
 
-      res.render('post-accordion', { 
-        posts,
+      console.log(post.comments);
+
+      res.render('single-post', { 
+        post,
         ...req.session
       });
     })

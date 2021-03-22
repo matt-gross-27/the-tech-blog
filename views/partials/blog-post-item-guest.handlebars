@@ -1,0 +1,17 @@
+
+  <div class="accordion-item">
+    <h2 class="accordion-header p-3" id="heading{{id}}">
+      <button class="accordion-button w-100 mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{id}}" aria-expanded="true" aria-controls="collapse{{id}}">
+        <em>{{title}}</em> by {{user.username}} on {{format_date created_at}}
+      </button>
+    </h2>
+    <div id="collapse{{id}}" class="accordion-collapse collapse show" aria-labelledby="heading{{id}}" data-bs-parent="#accordionExample">
+      <div class="accordion-body px-3 px-md-5 text-justify">
+        <div>
+          <p>
+          {{blog_text}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>

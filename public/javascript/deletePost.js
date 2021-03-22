@@ -15,7 +15,7 @@ async function deleteButtonHandler(event) {
 
   console.log(id);
 
-  const response = await fetch(`api//posts/${id}`, {
+  const response = await fetch(`${window.location.origin}/api//posts/${id}`, {
     method: 'DELETE',
     headers: { 'Content-Type': "application/json" }
   });

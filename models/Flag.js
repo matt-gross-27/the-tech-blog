@@ -30,7 +30,8 @@ Flag.init(
   },
   {
     sequelize,
-    modelName: 'flag'
+    modelName: 'flag',
+    timestamps: false
   });
 
 module.exports = Flag

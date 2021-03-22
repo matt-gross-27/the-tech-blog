@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Post, User, Comment } = require('../../models');
+const { Post, User, Comment, Like } = require('../../models');
 
 // GET /mypage then render html
 router.get('/', (req, res) => {
@@ -13,9 +13,6 @@ router.get('/', (req, res) => {
       'title',
       'blog_text',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM `like` WHERE post.id = `like`.post_id)'), 'like_count'],
-      [sequelize.literal('(SELECT COUNT(*) FROM `like` WHERE post.id = `like`.post_id and `like`.user_id = '+ req.session.user_id +')'), 'i_like'],
-      [sequelize.literal('(SELECT COUNT(*) FROM flag WHERE post.id = flag.post_id)'), 'flag_count']
     ],
     include: [
       {
@@ -27,15 +24,23 @@ router.get('/', (req, res) => {
         }
       },
       {
+        model: Like,
+        attributes: ['user_id']
+      },
+      {
         model: User,
         attributes: ['username']
-      }      
+      }
     ],
     order: [['id', 'DESC']]
   })
     .then(postData => {
       const posts = postData.map(post => post.get({ plain: true }));
-      console.log({posts, ...req.session})
+      
+      posts.forEach(post => {
+        post.i_like = post.likes.filter(like => like.user_id === req.session.user_id).length
+      });
+
       res.render('mypage', { 
         posts,
         ...req.session

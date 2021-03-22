@@ -1,0 +1,23 @@
+
+<div class="accordion accordion-flush w-100 mt-5" id="postAccordion">
+  {{#if loggedIn}}
+  {{#each posts }}
+      {{> blog-post-item-logged }}
+  {{/each}}
+  {{/if}}
+
+
+  {{#unless loggedIn}}
+  {{#each posts }}
+      {{> blog-post-item-guest }}
+  {{/each}}
+  {{/unless}}
+
+</div>
+
+
+
+
+
+
+<script src='/javascript/like.js'></script>

@@ -67,6 +67,15 @@ textarea {
   min-height: 250px;
 }
 
+.comment-form {
+  max-width: none;
+}
+
+.comment-textarea {
+  min-height: 0px;
+  height: 100px;
+}
+
 .btn-primary {
   background-color: var(--color3);
   color: black;
@@ -135,10 +144,11 @@ textarea {
 }
 
 .post-buttons {
-  height: 50px;
   width: 50px;
+  height: 50px;
   transition: .4s ease-in-out;
   color: var(--color3);
+  font-size: 16px;
 }
 
 .oi-commentDiv:hover, .oi-editDiv:hover{
@@ -165,3 +175,26 @@ textarea {
   color: red;
 }
 
+.comment-div:nth-of-type(4n-2) {
+  border-top: solid 1px;
+  border-color: var(--color1);
+  color:var(--color3)
+}
+
+.comment-div:nth-of-type(4n-3) {
+  border-top: solid 1px;
+  border-color: var(--color2);
+  color:var(--color4)
+}
+
+.comment-div:nth-of-type(4n-4) {
+  border-top: solid 1px;
+  border-color: var(--color3);
+  color:var(--color1)
+}
+
+.comment-div:nth-of-type(4n-5) {
+  border-top: solid 1px;
+  border-color: var(--color4);
+  color:var(--color2)
+}

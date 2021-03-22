@@ -5,7 +5,7 @@ async function createPostFormHandler(event) {
   const blog_text = document.querySelector("#blog-text").value;
 
   if (title && blog_text) {
-    const response = await fetch(`/api/posts`, {
+    const response = await fetch(`${window.location.origin}/api/posts`, {
       method: 'POST',
       body: JSON.stringify({ title, blog_text }),
       headers: { 'Content-Type': 'application/json' }

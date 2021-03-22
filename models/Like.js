@@ -30,7 +30,8 @@ Like.init(
   },
   {
     sequelize,
-    modelName: 'like'
+    modelName: 'like',
+    timestamps: false
   });
 
 module.exports = Like

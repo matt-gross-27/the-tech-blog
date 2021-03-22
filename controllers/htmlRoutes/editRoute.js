@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Post, User, Comment } = require('../../models');
+const { Post, User, Comment, Like } = require('../../models');
 
-// GET /mypage then render html
+// GET /posts/edit/:id then render html
 router.get('/:id', (req, res) => {
   Post.findOne({
     where: {
@@ -13,9 +13,6 @@ router.get('/:id', (req, res) => {
       'title',
       'blog_text',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM `like` WHERE post.id = `like`.post_id)'), 'like_count'],
-      // [sequelize.literal('(SELECT COUNT(*) FROM `like` WHERE post.id = `like`.post_id and `like`.user_id = '+ req.session.user_id +')'), 'i_like'],
-      [sequelize.literal('(SELECT COUNT(*) FROM flag WHERE post.id = flag.post_id)'), 'flag_count']
     ],
     include: [
       {
@@ -27,6 +24,10 @@ router.get('/:id', (req, res) => {
         }
       },
       {
+        model: Like,
+        attributes: ['user_id']
+      },
+      {
         model: User,
         attributes: ['username']
       }      
@@ -35,7 +36,10 @@ router.get('/:id', (req, res) => {
   })
     .then(postData => {
       const post = postData.get({ plain: true });
-      console.log({post, ...req.session})
+      
+      post.i_like = post.likes.filter(like => like.user_id === req.session.user_id).length
+
+
       res.render('edit-post', { 
         post,
         ...req.session

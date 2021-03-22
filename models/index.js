@@ -4,6 +4,33 @@ const Comment = require('./Comment');
 const Like = require('./Like');
 const Flag = require('./Flag');
 
+
+User.belongsToMany(Post, {
+  through: Like,
+  as: 'liked_posts',
+  foreignKey: 'user_id',
+  unique: false
+});
+
+User.belongsToMany(Post, {
+  through: Flag,
+  as: 'flagged_posts',
+  foreignKey: 'user_id'
+});
+
+Post.belongsToMany(User, {
+  through: Like,
+  as: 'liked_posts',
+  foreignKey: 'post_id',
+  unique: false
+});
+
+Post.belongsToMany(User, {
+  through: Flag,
+  as: 'flagged_posts',
+  foreignKey: 'post_id'
+});
+
 User.hasMany(Post, {
   foreignKey: 'user_id'
 });
@@ -13,39 +40,15 @@ Post.belongsTo(User, {
   onDelete: 'cascade'
 });
 
-User.belongsToMany(Post, {
-  through: Like,
-  as: 'liked_posts',
-  foreignKey: 'user_id'
-});
+// Like.belongsTo(User, {
+//   foreignKey: 'user_id',
+//   onDelete: 'cascade'
+// });
 
-User.belongsToMany(Post, {
-  through: Flag,
-  as: 'flagged_posts',
-  foreignKey: 'user_id'
-});
-
-Post.belongsToMany(User, {
-  through: Like,
-  as: 'liked_posts',
-  foreignKey: 'user_id'
-});
-
-Post.belongsToMany(User, {
-  through: Flag,
-  as: 'flagged_posts',
-  foreignKey: 'user_id'
-});
-
-Like.belongsTo(User, {
-  foreignKey: 'user_id',
-  onDelete: 'cascade'
-});
-
-Like.belongsTo(Post, {
-  foreignKey: 'post_id',
-  onDelete: 'cascade'
-});
+// Like.belongsTo(Post, {
+//   foreignKey: 'post_id',
+//   onDelete: 'cascade'
+// });
 
 Flag.belongsTo(User, {
   foreignKey: 'user_id',

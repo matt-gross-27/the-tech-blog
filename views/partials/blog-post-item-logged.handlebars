@@ -14,7 +14,7 @@
         </div>
         
         <div class="d-flex justify-content-around my-3">
-          
+
           {{!-- Comment --}}
           <a class="oi-commentDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}"
              href = "/posts/{{id}}"
@@ -32,16 +32,11 @@
             <span class="oi" data-glyph="heart"> {{likes.length}}</span>
           </div>
 
-          {{!-- EDIT --}}
-          <a class="oi-commentDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}"
-             href = "posts/edit/{{id}}"
-          >
-            <span class="oi" data-glyph="pencil"></span>
-          </a>
 
-          {{!-- TRASH  --}}
-          <div class="oi-trashDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}">
-            <span class="oi" data-glyph="trash"></span>
+          {{!-- FLAG --}}
+          <div class="oi-flagDiv d-flex align-items-center justify-content-center post-buttons rounded-circle" data-post_id ="{{id}}">
+            <span class="oi" data-glyph="flag"></span>
+            <span>{{flag_count}}</span>
           </div>
           
           {{!-- SHARE --}}
