@@ -14,7 +14,6 @@ async function logout() {
 }
 
 function resetTimer() {
-  console.log(`moving`)
   clearTimeout(timer);
   timer = setTimeout(logout, 1800000);
 }
