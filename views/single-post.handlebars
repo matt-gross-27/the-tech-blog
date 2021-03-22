@@ -8,9 +8,7 @@
     <div id="collapse{{post.id}}" class="accordion-collapse collapse show" aria-labelledby="heading{{post.id}}" data-bs-parent="#accordionExample">
       <div class="accordion-body px-3 px-md-5 text-justify">
         <div>
-          <p>
-          {{post.blog_text}}
-          </p>
+          <p class="accordion-p">{{post.blog_text}}</p>
         </div>
         
         <div class="d-flex justify-content-around my-3">
@@ -43,7 +41,7 @@
 
   <h2 class="h2">Comment</h2>
   <form id="create-comment" class="comment-form w-100" action="">
-    <textarea id="comment-text" class="comment-textarea w-100"></textarea> 
+    <textarea id="comment-text" class="comment-textarea w-100 mt-3"></textarea> 
     <button class="btn-main">Add Comment</button>
   </form>
 
@@ -51,6 +49,4 @@
     {{> comments }}
   {{/each}}
 
-<script src= "../../javascript/addComment.js"></script>`
-
-   
+<script src= "../../javascript/addComment.js"></script>

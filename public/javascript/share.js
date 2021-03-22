@@ -23,6 +23,8 @@ shareButtonHandler = (event) => {
     })
       .then(() => console.log('Successful share'))
       .catch(err => console.log('Error sharing:', err));
+  } else {
+    alert(`Sorry. This feature is not compatible with your browser :(`)
   }
 }
 

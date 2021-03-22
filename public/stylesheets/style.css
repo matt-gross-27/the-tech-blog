@@ -139,6 +139,11 @@ textarea {
   border: var(--color1) solid 1px;
 }
 
+.accordion-p {
+  white-space: pre-line;  
+}
+
+
 .accordion-button {
   background: none;
   color: var(--color1);
@@ -146,6 +151,10 @@ textarea {
   border: none;
   outline: none;
   font-size: 20px;
+}
+
+.accordion-button:focus {
+  outline: none;
 }
 
 .post-buttons {
