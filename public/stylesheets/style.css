@@ -137,7 +137,11 @@ textarea {
 
 .blog-post-p {
   white-space: pre-line;
-  overflow-wrap: break-word; 
+  overflow-wrap: break-word;
+}
+
+p {
+  overflow-wrap: break-word;
 }
 
 
