@@ -1,6 +1,6 @@
 const $searchForm = document.querySelector("#search-form");
 const $usersDatalist = document.querySelector("#users");
-let userData;
+let usernames;
 
 async function getUsers() {
   const response = await fetch(`${window.location.origin}/api/users`, {
@@ -8,6 +8,8 @@ async function getUsers() {
   });
 
   userData = await response.json();
+  usernames = userData.map(user => user.username);
+
 
   userData.forEach(user => {
     const optionEl = document.createElement('option');
@@ -20,7 +22,7 @@ searchFormHandler = (event) => {
   event.preventDefault();
 
   const username = document.querySelector("#search-username").value;
-  if (userData.includes(username)) {
+  if (usernames.includes(username)) {
     document.location.replace(`/${username}`);
   } else {
     document.querySelector("#search-username").value = null
