@@ -40,15 +40,15 @@ Post.belongsTo(User, {
   onDelete: 'cascade'
 });
 
-// Like.belongsTo(User, {
-//   foreignKey: 'user_id',
-//   onDelete: 'cascade'
-// });
+Like.belongsTo(User, {
+  foreignKey: 'user_id',
+  onDelete: 'cascade'
+});
 
-// Like.belongsTo(Post, {
-//   foreignKey: 'post_id',
-//   onDelete: 'cascade'
-// });
+Like.belongsTo(Post, {
+  foreignKey: 'post_id',
+  onDelete: 'cascade'
+});
 
 Flag.belongsTo(User, {
   foreignKey: 'user_id',
