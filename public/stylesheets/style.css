@@ -145,6 +145,9 @@ p {
   overflow-wrap: break-word;
 }
 
+.comment-div {
+  overflow-wrap: break-word;
+}
 
 .blog-post-header {
   background: none;
